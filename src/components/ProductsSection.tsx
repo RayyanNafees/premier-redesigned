@@ -43,7 +43,7 @@ const ProductCard = ({ product, index }: { product: typeof products[0]; index: n
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-40px" });
 
-  return (
+  const content = (
     <motion.div
       ref={ref}
       initial={{ opacity: 0, y: 40 }}
@@ -71,6 +71,12 @@ const ProductCard = ({ product, index }: { product: typeof products[0]; index: n
       </div>
     </motion.div>
   );
+
+  if (product.link) {
+    return <Link to={product.link}>{content}</Link>;
+  }
+
+  return content;
 };
 
 const ProductsSection = () => {
