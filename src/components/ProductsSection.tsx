@@ -1,6 +1,7 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 
 import labEquipment from "@/assets/products/lab-equipment.jpg";
 import mirrorFrames from "@/assets/products/mirror-frames.jpg";
@@ -20,7 +21,7 @@ import khonti from "@/assets/products/khonti.jpg";
 import panel from "@/assets/products/panel.jpg";
 
 const products = [
-  { name: "Pulp, Paper & Packaging Equipment", image: labEquipment },
+  { name: "Pulp, Paper & Packaging Equipment", image: labEquipment, link: "/products/pulp-paper-packaging" },
   { name: "Mirror Frames", image: mirrorFrames },
   { name: "Wooden Laser Articles", image: woodenLaser },
   { name: "Wooden Photo Frames", image: photoFrames },
@@ -42,7 +43,7 @@ const ProductCard = ({ product, index }: { product: typeof products[0]; index: n
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-40px" });
 
-  return (
+  const content = (
     <motion.div
       ref={ref}
       initial={{ opacity: 0, y: 40 }}
@@ -70,6 +71,12 @@ const ProductCard = ({ product, index }: { product: typeof products[0]; index: n
       </div>
     </motion.div>
   );
+
+  if (product.link) {
+    return <Link to={product.link}>{content}</Link>;
+  }
+
+  return content;
 };
 
 const ProductsSection = () => {
