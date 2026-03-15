@@ -21,7 +21,7 @@ import khonti from "@/assets/products/khonti.jpg";
 import panel from "@/assets/products/panel.jpg";
 
 const products = [
-  { name: "Pulp, Paper & Packaging Equipment", image: labEquipment },
+  { name: "Pulp, Paper & Packaging Equipment", image: labEquipment, link: "/products/pulp-paper-packaging" },
   { name: "Mirror Frames", image: mirrorFrames },
   { name: "Wooden Laser Articles", image: woodenLaser },
   { name: "Wooden Photo Frames", image: photoFrames },
