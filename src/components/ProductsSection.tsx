@@ -1,6 +1,7 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 
 import labEquipment from "@/assets/products/lab-equipment.jpg";
 import mirrorFrames from "@/assets/products/mirror-frames.jpg";
