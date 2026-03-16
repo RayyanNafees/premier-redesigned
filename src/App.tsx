@@ -6,6 +6,8 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import Index from "./pages/Index.tsx";
 import NotFound from "./pages/NotFound.tsx";
 import PulpPaperCategory from "./pages/PulpPaperCategory.tsx";
+import AboutPage from "./pages/AboutPage.tsx";
+import CareerPage from "./pages/CareerPage.tsx";
 
 const queryClient = new QueryClient();
 
@@ -17,6 +19,8 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/career" element={<CareerPage />} />
           <Route path="/products/pulp-paper-packaging" element={<PulpPaperCategory />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
