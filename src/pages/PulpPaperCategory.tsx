@@ -6,7 +6,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
 const products = [
-  { name: "Beating & Freeness Tester", image: "https://premierenterprises.co.in/wp-content/uploads/2024/03/free-ness-beating-tester-sr-type-300x300.jpg" },
+  { name: "Beating & Freeness Tester", image: "https://premierenterprises.co.in/wp-content/uploads/2024/03/free-ness-beating-tester-sr-type-300x300.jpg", slug: "beating-freeness-tester" },
   { name: "Beating and Freeness Tester (Canadian Type)", image: "https://premierenterprises.co.in/wp-content/uploads/2024/03/free-ness-beating-tester-300x300.jpg" },
   { name: "Box Compression Tester", image: "https://premierenterprises.co.in/wp-content/uploads/2024/03/box-compression-300x300.jpg" },
   { name: "Brightness Meter", image: "https://premierenterprises.co.in/wp-content/uploads/2024/03/brightness-meter-300x300.jpg" },
