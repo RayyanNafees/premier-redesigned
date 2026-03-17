@@ -8,6 +8,7 @@ import NotFound from "./pages/NotFound.tsx";
 import PulpPaperCategory from "./pages/PulpPaperCategory.tsx";
 import AboutPage from "./pages/AboutPage.tsx";
 import CareerPage from "./pages/CareerPage.tsx";
+import ProductDetail from "./pages/ProductDetail.tsx";
 
 const queryClient = new QueryClient();
 
