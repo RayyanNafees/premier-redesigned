@@ -6,7 +6,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
 const products = [
-  { name: "Beating & Freeness Tester", image: "https://premierenterprises.co.in/wp-content/uploads/2024/03/free-ness-beating-tester-sr-type-300x300.jpg" },
+  { name: "Beating & Freeness Tester", image: "https://premierenterprises.co.in/wp-content/uploads/2024/03/free-ness-beating-tester-sr-type-300x300.jpg", slug: "beating-freeness-tester" },
   { name: "Beating and Freeness Tester (Canadian Type)", image: "https://premierenterprises.co.in/wp-content/uploads/2024/03/free-ness-beating-tester-300x300.jpg" },
   { name: "Box Compression Tester", image: "https://premierenterprises.co.in/wp-content/uploads/2024/03/box-compression-300x300.jpg" },
   { name: "Brightness Meter", image: "https://premierenterprises.co.in/wp-content/uploads/2024/03/brightness-meter-300x300.jpg" },
@@ -44,29 +44,33 @@ const ProductCard = ({ product, index }: { product: typeof products[0]; index: n
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-40px" });
 
+  const Wrapper = product.slug ? Link : "div";
+  const wrapperProps = product.slug ? { to: `/product/${product.slug}` } : {};
+
   return (
     <motion.div
       ref={ref}
       initial={{ opacity: 0, y: 40 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.5, delay: (index % 4) * 0.08 }}
-      className="group relative overflow-hidden bg-gradient-card border border-gold"
     >
-      <div className="aspect-square overflow-hidden bg-muted/20">
-        <img
-          src={product.image}
-          alt={product.name}
-          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-          loading="lazy"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/30 to-transparent opacity-60 group-hover:opacity-85 transition-opacity duration-500" />
-      </div>
-      <div className="absolute bottom-0 left-0 right-0 p-5">
-        <h3 className="text-sm font-heading font-semibold text-foreground leading-tight">
-          {product.name}
-        </h3>
-        <div className="mt-2 w-0 group-hover:w-full h-px bg-primary transition-all duration-500" />
-      </div>
+      <Wrapper {...(wrapperProps as any)} className="group relative overflow-hidden bg-gradient-card border border-gold block cursor-pointer">
+        <div className="aspect-square overflow-hidden bg-muted/20">
+          <img
+            src={product.image}
+            alt={product.name}
+            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+            loading="lazy"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/30 to-transparent opacity-60 group-hover:opacity-85 transition-opacity duration-500" />
+        </div>
+        <div className="absolute bottom-0 left-0 right-0 p-5">
+          <h3 className="text-sm font-heading font-semibold text-foreground leading-tight">
+            {product.name}
+          </h3>
+          <div className="mt-2 w-0 group-hover:w-full h-px bg-primary transition-all duration-500" />
+        </div>
+      </Wrapper>
     </motion.div>
   );
 };
