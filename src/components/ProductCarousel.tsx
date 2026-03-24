@@ -61,6 +61,21 @@ const products = [
   },
 ];
 
+const StarRating = ({ rating }: { rating: number }) => (
+  <div className="flex gap-1">
+    {[1, 2, 3, 4, 5].map((star) => (
+      <Star
+        key={star}
+        className={`w-4 h-4 ${
+          star <= rating
+            ? "fill-primary text-primary"
+            : "fill-muted text-muted-foreground/30"
+        }`}
+      />
+    ))}
+  </div>
+);
+
 const ProductCarousel = () => {
   const [api, setApi] = useState<CarouselApi>();
   const [current, setCurrent] = useState(0);
