@@ -126,18 +126,14 @@ const ProductCarousel = () => {
                               </Link>
                             </div>
                           </div>
-                          <div className="flex items-center gap-2">
-                            {products.map((_, i) => (
-                              <button
-                                key={i}
-                                onClick={() => api?.scrollTo(i)}
-                                className={`h-1.5 rounded-full transition-all duration-300 ${
-                                  current === i
-                                    ? "w-8 bg-primary"
-                                    : "w-3 bg-muted-foreground/30 hover:bg-muted-foreground/50"
-                                }`}
-                              />
-                            ))}
+                          <div className="flex items-center gap-6">
+                            <StarRating rating={product.rating} />
+                            <a
+                              href="#products"
+                              className="inline-flex items-center gap-2 px-5 py-2.5 bg-primary text-primary-foreground font-body font-semibold text-xs uppercase tracking-wider hover:bg-primary/90 transition-colors"
+                            >
+                              View Details
+                            </a>
                           </div>
                         </motion.div>
                       )}
