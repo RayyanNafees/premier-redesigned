@@ -117,7 +117,7 @@ const ProductCarousel = () => {
                 </div>
 
                 {/* Content */}
-                <div className="relative h-full max-w-7xl mx-auto px-8 md:px-16 flex items-center">
+                <div className="relative h-full max-w-7xl mx-auto px-8 md:px-16 flex items-end pb-20">
                   <AnimatePresence mode="wait">
                     {current === index && (
                       <motion.div
