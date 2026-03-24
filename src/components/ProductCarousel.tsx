@@ -1,6 +1,7 @@
 import { useRef, useCallback, useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Star, ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import { Link } from "react-router-dom";
 import Autoplay from "embla-carousel-autoplay";
 import {
   Carousel,
@@ -60,21 +61,6 @@ const products = [
   },
 ];
 
-const StarRating = ({ rating }: { rating: number }) => (
-  <div className="flex gap-1">
-    {[1, 2, 3, 4, 5].map((star) => (
-      <Star
-        key={star}
-        className={`w-4 h-4 ${
-          star <= rating
-            ? "fill-primary text-primary"
-            : "fill-muted text-muted-foreground/30"
-        }`}
-      />
-    ))}
-  </div>
-);
-
 const ProductCarousel = () => {
   const [api, setApi] = useState<CarouselApi>();
   const [current, setCurrent] = useState(0);
@@ -104,14 +90,14 @@ const ProductCarousel = () => {
             <CarouselItem key={product.name} className="basis-full">
               <div className="relative w-full flex flex-col">
                 {/* Product image — clean, no overlay */}
-                <div className="relative h-[350px] md:h-[450px] flex items-center justify-center bg-background">
+                <Link to="#products" className="relative h-[350px] md:h-[450px] flex items-center justify-center bg-background cursor-pointer">
                   <img
                     src={product.image}
                     alt={product.name}
-                    className="h-full w-auto max-w-full object-contain"
+                    className="h-full w-auto max-w-full object-contain hover:scale-105 transition-transform duration-300"
                     loading={index === 0 ? "eager" : "lazy"}
                   />
-                </div>
+                </Link>
 
                 {/* Info bar — opaque strip at the bottom */}
                 <div className="bg-card border-t border-border">
@@ -132,19 +118,27 @@ const ProductCarousel = () => {
                               <p className="text-primary/90 text-xs font-body font-semibold uppercase tracking-[0.25em] mb-1">
                                 {product.subtitle}
                               </p>
-                              <h2 className="text-xl md:text-2xl font-heading font-bold text-foreground leading-tight">
+                              <Link
+                                to="#products"
+                                className="text-xl md:text-2xl font-heading font-bold text-foreground leading-tight hover:text-primary transition-colors"
+                              >
                                 {product.name}
-                              </h2>
+                              </Link>
                             </div>
                           </div>
-                          <div className="flex items-center gap-6">
-                            <StarRating rating={product.rating} />
-                            <a
-                              href="#products"
-                              className="inline-flex items-center gap-2 px-5 py-2.5 bg-primary text-primary-foreground font-body font-semibold text-xs uppercase tracking-wider hover:bg-primary/90 transition-colors"
+                          <div className="flex items-center gap-3">
+                            <button
+                              onClick={scrollPrev}
+                              className="h-10 w-10 flex items-center justify-center border border-border text-foreground hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all"
                             >
-                              View Details
-                            </a>
+                              <ChevronLeft className="w-4 h-4" />
+                            </button>
+                            <button
+                              onClick={scrollNext}
+                              className="h-10 w-10 flex items-center justify-center border border-border text-foreground hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all"
+                            >
+                              <ChevronRight className="w-4 h-4" />
+                            </button>
                           </div>
                         </motion.div>
                       )}
@@ -156,19 +150,6 @@ const ProductCarousel = () => {
           ))}
         </CarouselContent>
 
-        {/* Navigation arrows */}
-        <button
-          onClick={scrollPrev}
-          className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 z-10 h-12 w-12 flex items-center justify-center bg-card/60 backdrop-blur-sm border border-border text-foreground hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all"
-        >
-          <ChevronLeft className="w-5 h-5" />
-        </button>
-        <button
-          onClick={scrollNext}
-          className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 z-10 h-12 w-12 flex items-center justify-center bg-card/60 backdrop-blur-sm border border-border text-foreground hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all"
-        >
-          <ChevronRight className="w-5 h-5" />
-        </button>
 
         {/* Dot indicators */}
         <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2 z-10">
