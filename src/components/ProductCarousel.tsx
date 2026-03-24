@@ -102,51 +102,54 @@ const ProductCarousel = () => {
         <CarouselContent>
           {products.map((product, index) => (
             <CarouselItem key={product.name} className="basis-full">
-              <div className="relative h-[500px] md:h-[600px] w-full">
-                {/* Background image */}
-                <div className="absolute inset-0">
+              <div className="relative w-full flex flex-col">
+                {/* Product image — clean, no overlay */}
+                <div className="relative h-[350px] md:h-[450px] flex items-center justify-center bg-background">
                   <img
                     src={product.image}
                     alt={product.name}
-                    className="w-full h-full object-contain bg-background/50"
+                    className="h-full w-auto max-w-full object-contain"
                     loading={index === 0 ? "eager" : "lazy"}
                   />
-                  {/* Overlays */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-background via-background/80 to-transparent" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-background/40" />
                 </div>
 
-                {/* Content */}
-                <div className="relative h-full max-w-7xl mx-auto px-8 md:px-16 flex items-end pb-20">
-                  <AnimatePresence mode="wait">
-                    {current === index && (
-                      <motion.div
-                        key={product.name}
-                        initial={{ opacity: 0, x: -40 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        exit={{ opacity: 0, x: 40 }}
-                        transition={{ duration: 0.5 }}
-                        className="max-w-lg"
-                      >
-                        <div className="line-accent mb-6" />
-                        <p className="text-primary/90 text-xs md:text-sm font-body font-semibold uppercase tracking-[0.25em] mb-3">
-                          {product.subtitle}
-                        </p>
-                        <h2 className="text-3xl md:text-5xl lg:text-6xl font-heading font-bold text-foreground leading-tight mb-5">
-                          {product.name}
-                        </h2>
-                        <StarRating rating={product.rating} />
-                        <div className="mt-8">
-                          <a
-                            href="#products"
-                            className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground font-body font-semibold text-sm uppercase tracking-wider hover:bg-primary/90 transition-colors"
-                          >
-                            View Details
-                          </a>
-                        </div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
+                {/* Info bar — opaque strip at the bottom */}
+                <div className="bg-card border-t border-border">
+                  <div className="max-w-7xl mx-auto px-8 md:px-16 py-5">
+                    <AnimatePresence mode="wait">
+                      {current === index && (
+                        <motion.div
+                          key={product.name}
+                          initial={{ opacity: 0, y: 10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: -10 }}
+                          transition={{ duration: 0.4 }}
+                          className="flex flex-col md:flex-row md:items-center md:justify-between gap-4"
+                        >
+                          <div className="flex items-center gap-6">
+                            <div className="h-8 w-0.5 bg-primary hidden md:block" />
+                            <div>
+                              <p className="text-primary/90 text-xs font-body font-semibold uppercase tracking-[0.25em] mb-1">
+                                {product.subtitle}
+                              </p>
+                              <h2 className="text-xl md:text-2xl font-heading font-bold text-foreground leading-tight">
+                                {product.name}
+                              </h2>
+                            </div>
+                          </div>
+                          <div className="flex items-center gap-6">
+                            <StarRating rating={product.rating} />
+                            <a
+                              href="#products"
+                              className="inline-flex items-center gap-2 px-5 py-2.5 bg-primary text-primary-foreground font-body font-semibold text-xs uppercase tracking-wider hover:bg-primary/90 transition-colors"
+                            >
+                              View Details
+                            </a>
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
                 </div>
               </div>
             </CarouselItem>
