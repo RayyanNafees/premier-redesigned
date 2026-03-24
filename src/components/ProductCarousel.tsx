@@ -159,6 +159,21 @@ const ProductCarousel = () => {
           <ChevronRight className="w-5 h-5" />
         </button>
       </Carousel>
+
+      {/* Dot indicators below carousel */}
+      <div className="bg-card border-t border-border py-4 flex justify-center gap-2">
+        {products.map((_, index) => (
+          <button
+            key={index}
+            onClick={() => api?.scrollTo(index)}
+            className={`h-1.5 rounded-full transition-all duration-300 ${
+              current === index
+                ? "w-8 bg-primary"
+                : "w-3 bg-muted-foreground/30 hover:bg-muted-foreground/50"
+            }`}
+          />
+        ))}
+      </div>
     </section>
   );
 };
