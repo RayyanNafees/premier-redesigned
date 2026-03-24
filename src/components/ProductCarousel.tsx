@@ -126,19 +126,18 @@ const ProductCarousel = () => {
                               </Link>
                             </div>
                           </div>
-                          <div className="flex items-center gap-3">
-                            <button
-                              onClick={scrollPrev}
-                              className="h-10 w-10 flex items-center justify-center border border-border text-foreground hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all"
-                            >
-                              <ChevronLeft className="w-4 h-4" />
-                            </button>
-                            <button
-                              onClick={scrollNext}
-                              className="h-10 w-10 flex items-center justify-center border border-border text-foreground hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all"
-                            >
-                              <ChevronRight className="w-4 h-4" />
-                            </button>
+                          <div className="flex items-center gap-2">
+                            {products.map((_, i) => (
+                              <button
+                                key={i}
+                                onClick={() => api?.scrollTo(i)}
+                                className={`h-1.5 rounded-full transition-all duration-300 ${
+                                  current === i
+                                    ? "w-8 bg-primary"
+                                    : "w-3 bg-muted-foreground/30 hover:bg-muted-foreground/50"
+                                }`}
+                              />
+                            ))}
                           </div>
                         </motion.div>
                       )}
