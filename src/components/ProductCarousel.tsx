@@ -133,19 +133,27 @@ const ProductCarousel = () => {
                               <p className="text-primary/90 text-xs font-body font-semibold uppercase tracking-[0.25em] mb-1">
                                 {product.subtitle}
                               </p>
-                              <h2 className="text-xl md:text-2xl font-heading font-bold text-foreground leading-tight">
+                              <Link
+                                to="#products"
+                                className="text-xl md:text-2xl font-heading font-bold text-foreground leading-tight hover:text-primary transition-colors"
+                              >
                                 {product.name}
-                              </h2>
+                              </Link>
                             </div>
                           </div>
-                          <div className="flex items-center gap-6">
-                            <StarRating rating={product.rating} />
-                            <a
-                              href="#products"
-                              className="inline-flex items-center gap-2 px-5 py-2.5 bg-primary text-primary-foreground font-body font-semibold text-xs uppercase tracking-wider hover:bg-primary/90 transition-colors"
+                          <div className="flex items-center gap-3">
+                            <button
+                              onClick={scrollPrev}
+                              className="h-10 w-10 flex items-center justify-center border border-border text-foreground hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all"
                             >
-                              View Details
-                            </a>
+                              <ChevronLeft className="w-4 h-4" />
+                            </button>
+                            <button
+                              onClick={scrollNext}
+                              className="h-10 w-10 flex items-center justify-center border border-border text-foreground hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all"
+                            >
+                              <ChevronRight className="w-4 h-4" />
+                            </button>
                           </div>
                         </motion.div>
                       )}
