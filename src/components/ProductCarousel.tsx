@@ -149,21 +149,19 @@ const ProductCarousel = () => {
           ))}
         </CarouselContent>
 
-
-        {/* Dot indicators */}
-        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2 z-10">
-          {products.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => api?.scrollTo(index)}
-              className={`h-1.5 rounded-full transition-all duration-300 ${
-                current === index
-                  ? "w-8 bg-primary"
-                  : "w-3 bg-muted-foreground/30 hover:bg-muted-foreground/50"
-              }`}
-            />
-          ))}
-        </div>
+        {/* Navigation arrows */}
+        <button
+          onClick={scrollPrev}
+          className="absolute left-4 md:left-8 top-[175px] md:top-[225px] -translate-y-1/2 z-10 h-12 w-12 flex items-center justify-center bg-card/60 backdrop-blur-sm border border-border text-foreground hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all"
+        >
+          <ChevronLeft className="w-5 h-5" />
+        </button>
+        <button
+          onClick={scrollNext}
+          className="absolute right-4 md:right-8 top-[175px] md:top-[225px] -translate-y-1/2 z-10 h-12 w-12 flex items-center justify-center bg-card/60 backdrop-blur-sm border border-border text-foreground hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all"
+        >
+          <ChevronRight className="w-5 h-5" />
+        </button>
       </Carousel>
     </section>
   );
