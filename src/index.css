@@ -1,0 +1,92 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=DM+Sans:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 30 15% 6%;
+    --foreground: 38 25% 90%;
+
+    --card: 30 12% 10%;
+    --card-foreground: 38 25% 90%;
+
+    --popover: 30 12% 10%;
+    --popover-foreground: 38 25% 90%;
+
+    --primary: 36 60% 50%;
+    --primary-foreground: 30 15% 6%;
+
+    --secondary: 30 10% 16%;
+    --secondary-foreground: 38 25% 90%;
+
+    --muted: 30 8% 14%;
+    --muted-foreground: 30 10% 55%;
+
+    --accent: 36 60% 50%;
+    --accent-foreground: 30 15% 6%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 30 10% 18%;
+    --input: 30 10% 18%;
+    --ring: 36 60% 50%;
+
+    --radius: 0.25rem;
+
+    --font-heading: 'Cormorant Garamond', serif;
+    --font-body: 'DM Sans', sans-serif;
+
+    --gold-glow: 36 80% 55%;
+    --warm-cream: 38 30% 85%;
+    --deep-walnut: 20 25% 12%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-body);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+  }
+}
+
+@layer components {
+  .text-gradient-gold {
+    background: linear-gradient(135deg, hsl(36 60% 50%), hsl(42 80% 65%), hsl(36 60% 50%));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .bg-gradient-dark {
+    background: linear-gradient(180deg, hsl(30 15% 6%) 0%, hsl(20 25% 12%) 100%);
+  }
+
+  .bg-gradient-card {
+    background: linear-gradient(145deg, hsl(30 12% 10%) 0%, hsl(30 15% 8%) 100%);
+  }
+
+  .border-gold {
+    border-color: hsl(36 60% 50% / 0.3);
+  }
+
+  .shadow-gold {
+    box-shadow: 0 0 40px hsl(36 60% 50% / 0.1);
+  }
+
+  .line-accent {
+    width: 60px;
+    height: 2px;
+    background: linear-gradient(90deg, hsl(36 60% 50%), hsl(42 80% 65%));
+  }
+}
