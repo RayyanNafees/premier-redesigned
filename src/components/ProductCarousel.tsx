@@ -105,14 +105,14 @@ const ProductCarousel = () => {
             <CarouselItem key={product.name} className="basis-full">
               <div className="relative w-full flex flex-col">
                 {/* Product image — clean, no overlay */}
-                <div className="relative h-[350px] md:h-[450px] flex items-center justify-center bg-background">
+                <Link to="#products" className="relative h-[350px] md:h-[450px] flex items-center justify-center bg-background cursor-pointer">
                   <img
                     src={product.image}
                     alt={product.name}
-                    className="h-full w-auto max-w-full object-contain"
+                    className="h-full w-auto max-w-full object-contain hover:scale-105 transition-transform duration-300"
                     loading={index === 0 ? "eager" : "lazy"}
                   />
-                </div>
+                </Link>
 
                 {/* Info bar — opaque strip at the bottom */}
                 <div className="bg-card border-t border-border">
